@@ -25,11 +25,11 @@ Steps for configuring (assuming Fixed Baseline and GPS-For-Yaw)
 4.	Get the mower operating on GPS1 receiving  RTCM3 correction data.  Look for the  Mission Planner data screen to report GPS rtk Fixed
 5.	Follow procedures and install and set up the other GPS unit for GPS-For-Yaw.  With both GPS units installed and receiving RTCM signals the  Mission Planner data screen to report GPS1 rtk Fixed and GPS2 GPS1 rtk Fixed
 
-.. image:: ../images/mower-GPS1_GPS2_rtk_Fix_screenshot.png
-    :target: ../_images/mower-GPS1_GPS2_rtk_Fix_screenshot.png
+.. image:: ../images/mower-GPS1_GPS2_rtk_Fix_cropped.png
+    :target: ../_images/mower-GPS1_GPS2_rtk_Fix_cropped.png
 This is what you should see
 
-
+https://github.com/SAJohnson1503/ardupilot_wiki/blob/rover-mower-5/rover/source/images/mower-GPS1_GPS2_rtk_Fix_cropped.png
 
 Configuration tips:
 Make sure you have the correct configuration parameters installed.  Check and recheck them.  Getting the configuration parameters for each GPS unit that define position of the GPS antennas in the body frame are critical.  Remember there has to be a minimum of 30cm (1 meter is better) between the antennas and the farther apart they are, the better.   You will get a more accurate heading reference when they are spaced further apart.
