@@ -118,6 +118,8 @@ Picture of CZH_Labs SPDT 8channel PWMR Relay Model_D-228
     :target: ../_images/mower-servo_cam-over_on_throttle2.png
 Picture of Servo Cam-over on throttle linkage
 
+The cam over technique takes all the rotational load off a sero in the run position.
+
 
 
 Additional Hardware??
