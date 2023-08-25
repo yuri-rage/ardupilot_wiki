@@ -30,7 +30,9 @@ Steps for configuring (assuming Fixed Baseline and GPS-For-Yaw)
 This is what you should see
 
 
-Configuration tips:
+Configuration tips
+==================
+
 Make sure you have the correct configuration parameters installed.  Check and recheck them.  Getting the configuration parameters for each GPS unit that define position of the GPS antennas in the body frame are critical.  Remember there has to be a minimum of 30cm (1 meter is better) between the antennas and the farther apart they are, the better.   You will get a more accurate heading reference when they are spaced further apart.
 GPS_POS1_X/Y/Z
 GPS_POS2_X/Y/Z 
