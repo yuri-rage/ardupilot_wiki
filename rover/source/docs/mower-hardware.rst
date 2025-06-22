@@ -12,8 +12,8 @@ Autopilots
 
 Cube Orange or Mateksys H743 is widely used on mowers.
 
-Many of the mowers out there use the Cube Orange and they have all the processing power and memory that the mower requires. The Mateksys H743 series have VERY similar processor and memory specs as the Cube Orange and Orange+. What you give up with the Mateksys boards is heated/vibration damped IMUs (not important features for the mower application) and the convenient form factor of the Cubes. You actually gain a UART or two with the Mateksys autopilot. A good compromise is the ZealotH743, which is packaged into a very nice enclosure at a lower price point than the Cubes.
-Some users have used other autopilots for the mower application as well, but the Cube Orange and the Mateksys H743 allow advanced control capabilities using scripts as well as room to store 700 waypoints for complex mowing plans.  Other autopilots may not have the same capabilities.
+Many of the mowers out there use the Cube Orange and they have all the processing power and memory that the mower requires. The Mateksys H743 and the Hohybro Kakute H743 Wing series have VERY similar processor and memory specs as the Cube Orange and Orange+. What you give up with the Mateksys or Holybro boards is heated/vibration damped IMUs (not important features for the mower application) and the convenient form factor of the Cubes. You actually gain a UART or two with the Mateksys autopilot. A good compromise is the ZealotH743, which is packaged into a very nice enclosure at a lower price point than the Cubes.
+Some users have used other autopilots for the mower application as well, but the Cube Orange, the Mateksys H743, and the Hohybro Kakute H743 Wing allow advanced control capabilities using scripts as well as room to store 700 waypoints for complex mowing plans.  Some users have also migrated to high end flight controllers like the CUAV V6X or the the  Holybro Pixhawk 6 to have Ethernet communications as an option instead of radios. Other autopilots may not have the same capabilities and there are many options.
 
 GPS Hardware
 ============
