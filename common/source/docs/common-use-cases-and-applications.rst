@@ -22,7 +22,10 @@ Use Cases
 .. image:: ../../../images/case-boat.jpg
 
 
-- Autonomous Mowers and Tractors
+.. toctree::
+    :maxdepth: 1
+
+    Autonomous Mowers and Tractors <mower-home>
 
 .. image:: ../../../images/case-tractor.jpg
 
