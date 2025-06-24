@@ -15,7 +15,7 @@ There is an active and growing community using ArduPilot Rovers for lawn mowing 
 .. toctree::
   :titlesonly:
 
-    RTK Mower Overview <mower-overview>
+    Autonomous Zero Turn Mowers <mower-ztr_overview>
     Hardware Recommendations <mower-hardware>
     Mower Platforms <mower-platforms>
     
