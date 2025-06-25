@@ -32,3 +32,10 @@ Some of these functions are as follows:
 
 In summary it means that for a mower you need an RC transmitter/reviver capable of at least 10 channels, the more the better.
 
+Typical Mower Electronics Enclosure
+====================================
+
+.. image:: ../images/mower-electronics.png
+    :target: ../_images/mower-electronics.png
+
+
