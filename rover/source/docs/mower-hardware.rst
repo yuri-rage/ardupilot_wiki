@@ -67,7 +67,7 @@ Servo Mounting for Various Models
 Servo and Linkage mounting on Hustler Raptor SD
 
 (image missing)
-Linear Actuators mounted on a Kubota ZD326 Diesel mower
+TODO:  Need to add a picture  Linear Actuators mounted on a Kubota ZD326 Diesel mower
 
 Other Hardware to Allow Remote Operation
 ========================================
