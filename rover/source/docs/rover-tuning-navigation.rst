@@ -24,6 +24,8 @@ Factors affecting the path include:
 - The vehicle will slow down in the corners if necessary to pass within :ref:`WP_RADIUS<WP_RADIUS>` of the waypoint without exceeding the maximum accelerations (e.g. the lowest of :ref:`ATC_ACCEL_MAX<ATC_ACCEL_MAX>`, :ref:`ATC_DECEL_MAX<ATC_DECEL_MAX>` and :ref:`ATC_TURN_MAX_G<ATC_TURN_MAX_G>` * 9.81)
 - Placing waypoints close together may lead to the vehicle traveling slowly
 
+.. _rover-tuning-navigation-pos-control:
+
 Position Controller
 -------------------
 
@@ -68,6 +70,37 @@ It may also help to monitor the velocity controller PIDs in real-time
 
   .. image:: ../images/rover-tuning-navigation-realtime.png
       :target: ../_images/rover-tuning-navigation-realtime.png
+
+Stanley controller
+------------------
+
+The Stanley controller is an alternative lateral path-tracking controller. It implements the geometric path-tracking control law described in the Stanford paper: `Autonomous Automobile Trajectory Tracking for Off-Road Driving <https://ai.stanford.edu/~gabeh/papers/hoffmann_stanley_control07.pdf>`_ (Hoffmann et al., 2007). It directly calculates steering output using both heading error (relative to the path segment) and cross-track error (lateral distance from the path segment).
+
+.. note::
+   For Ackermann-steered vehicles, the low-level steering rate (turn rate) controller is bypassed entirely under Stanley control. However, skid-steered vehicles still convert the Stanley steering angle output to a target yaw rate, meaning their :ref:`steering rate controller <rover-tuning-steering-rate>` must be tuned beforehand.
+
+To enable the Stanley controller, set the parameter :ref:`ATC_STAN_USE<ATC_STAN_USE>` to 1.
+
+Recommended steps for tuning the Stanley controller:
+
+- **Tune the Position Controller**: Follow the steps in the :ref:`Position Controller <rover-tuning-navigation-pos-control>` section above to tune the velocity and position tracking gains, as they still govern the vehicle's speed and acceleration profiling under Stanley guidance.
+- **Configure Vehicle Geometry**:
+  - For Ackermann-steered vehicles:
+    - Ensure :ref:`ATC_WHLBASE_LEN<ATC_WHLBASE_LEN>` is set accurately to the physical distance (in meters) between the front and rear axles.
+    - Ensure :ref:`ATC_STR_ANG_MAX<ATC_STR_ANG_MAX>` is set accurately to the maximum physical steering angle (in degrees), as this is used directly to scale the steering output.
+  - For skid-steered vehicles:
+    - Set :ref:`ATC_WHLBASE_LEN<ATC_WHLBASE_LEN>` to the physical distance (in meters) between the front and rear wheels or the longitudinal track footprint.
+- **Tune Cross-Track Gain**: Adjust :ref:`ATC_STAN_K<ATC_STAN_K>` (default is 1.0). Higher values correct cross-track errors more aggressively. Adjust in increments of 0.1 to 0.2, stopping at the point where the vehicle starts to oscillate or weave.
+- **Tune Softening Speed**: Adjust :ref:`ATC_STAN_V0<ATC_STAN_V0>` (default is 1.0 m/s) in increments of 0.1 to 0.2. This parameter acts as a softening factor in the denominator of the cross-track steering term (speed + ATC_STAN_V0), which bounds the maximum low-speed steering gain. It prevents erratic or excessively large steering commands when the vehicle is stationary or starting from a stop. If the vehicle oscillates or steers violently when beginning to move, increase this parameter; if it is sluggish to correct errors at slow speeds, decrease it.
+- **Tune Damping**: Adjust :ref:`ATC_STAN_KD<ATC_STAN_KD>` in increments of 0.05 to damp out yaw rate oscillations and stabilize the vehicle during fast transitions.
+
+Tuning Skid-Steer Vehicles
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On skid-steered vehicles, :ref:`ATC_WHLBASE_LEN<ATC_WHLBASE_LEN>` and :ref:`ATC_STR_ANG_MAX<ATC_STR_ANG_MAX>` act as virtual control levers for the Stanley controller:
+
+- **ATC_WHLBASE_LEN**: Larger values increase heading lookahead (anticipating corners earlier) but scale down the commanded turn rate (smoothing steering). Smaller values make steering sharper but reduce lookahead.
+- **ATC_STR_ANG_MAX**: Indirectly caps the maximum commanded turn rate. If the vehicle cannot turn sharply enough, increase this parameter; if the steering is too violent during transitions, decrease it.
 
 Other Parameters
 ----------------
